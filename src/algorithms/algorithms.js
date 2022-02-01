@@ -82,78 +82,79 @@ export const mergeSort = (array) => {
 
 
   export const quickSort = (array) => {
-      if (array.length < 1 ) {return array}
-      const animations = []
-      quickSorter(array,0, array.length, animations)
-
-    console.log({animations})
+    const animations = []
+    quickSorter(array, 0, array.length - 1, animations)
     return animations
   }
 
   const quickSorter = (arr, low, high, animations)  => {
 
-    if (low < high ) { 
-       let pi = partition(arr, low, high, animations)
-       quickSorter(arr, low, pi - 1, animations);
-       quickSorter(arr, pi + 1, high, animations);
-    }
+    if (low < high) {
+ 
+      // pi is partitioning index, arr[p]
+      // is now at right place
+      let pi = partition(arr, low, high, animations);
+
+      // Separately sort elements before
+      // partition and after partition
+      quickSorter(arr, low, pi - 1, animations);
+      quickSorter(arr, pi + 1, high, animations);
+      
+  }
   }
 
-  const partition = (arr, low, high, animations) => {
- 
-    // pivot
-    let pivot = arr[high];
- 
+  const partition = (arr, low, high, animations)  => {
+    
+  // pivot
+    let pivot = arr[high]
     // Index of smaller element and
     // indicates the right position
     // of pivot found so far
-    let i = (low - 1);
- 
+    let i = (low - 1)
+
     for (let j = low; j <= high - 1; j++) {
+
         // If current element is smaller
         // than the pivot
         if (arr[j] < pivot) {
-            i++;
-            if (arr[i] != undefined && arr[j] != undefined) {
-              var tp = arr[i]
-              var tpp = arr[j]
+            // Increment index of
+            // smaller element
+            i++
+            if (arr[i] != 'undefined' && arr[j] != 'undefined') {
+
               animations.push([i, j])
               animations.push([i, j])
-          
-              animations.push([i, tpp])
-          
-              animations.push([i,j])
-              animations.push([i,j])
-              
-              animations.push([j, tp])
+
+              animations.push([j, arr[i]])
+
+              animations.push([i, j])
+              animations.push([i, j])
+              animations.push([i, arr[j]])
+
             }
-            swap(arr, i, j, animations)
+            swap(arr, i, j)
         }
     }
 
-    if (arr[i+1] != undefined && arr[high] != undefined) {
-      var tp = arr[i+1]
-      var tpp = arr[high-1]
-      animations.push([i, high-1])
-      animations.push([i, high-1])
-  
-      animations.push([i, tpp])
-  
-      animations.push([i, high-1])
-      animations.push([i, high-1])
+    if (arr[i] != 'undefined' && arr[high] != 'undefined') {
+      animations.push([i+1, high])
+      animations.push([i+1, high])
+      animations.push([i+1, arr[high]])
       
-      animations.push([high-1, tp])
+      animations.push([i+1, high])
+      animations.push([i+1, high])
+      animations.push([high, arr[i+1]])
     }
-    swap(arr, i + 1, high, animations);
-    return (i + 1);
+
+    swap(arr, i + 1, high)
+    return (i + 1)
 }
 
-const swap = (arr, i, j, animations) =>  {
 
-
-    let temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+const swap = (arr, i, j) =>  {
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
 }
 
 

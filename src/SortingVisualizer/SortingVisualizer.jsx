@@ -2,9 +2,9 @@ import React from "react";
 import * as algorithms from '../algorithms/algorithms'
 import './SortingVisualizer.css'
 
-const NUMBER_OF_BARS = 100
+const NUMBER_OF_BARS = 110
 
-const ANIMATON_SPEED = 5
+const ANIMATON_SPEED = 20
 
 export default class SortingVisualizer extends React.Component {
     
@@ -59,9 +59,9 @@ export default class SortingVisualizer extends React.Component {
 
     quickSort() {
       const animations = algorithms.quickSort(this.state.array)
-      console.log({animations})
       for (let i = 0; i < animations.length; i++) {
-        const arrayBars = document.getElementsByClassName('array-bar')
+        const arrayBars = document.getElementsByClassName('array-bar') 
+        console.log(arrayBars)
         const isColorChange = i % 3 !== 2
         if (isColorChange) {
           const [barOneIdx, barTwoIdx] = animations[i]
@@ -128,7 +128,7 @@ export default class SortingVisualizer extends React.Component {
             <button class="button" role="button">
             <button onClick={() => this.resetArray()}> New Array</button>
             <button onClick={() => this.mergeSort()}> Merge Sort</button>
-           
+            <button onClick={() => this.quickSort()}> Quick Sort</button>
             <button onClick={() => this.bubbleSort()}> Bubble Sort</button>
             
             </button>
