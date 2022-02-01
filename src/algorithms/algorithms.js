@@ -82,10 +82,11 @@ export const mergeSort = (array) => {
 
 
   export const quickSort = (array) => {
+      if (array.length < 1 ) {return array}
       const animations = []
-     quickSorter(array,0, array.length, animations)
+      quickSorter(array,0, array.length, animations)
 
-     console.log({animations})
+    console.log({animations})
     return animations
   }
 
@@ -109,27 +110,47 @@ export const mergeSort = (array) => {
     let i = (low - 1);
  
     for (let j = low; j <= high - 1; j++) {
- 
         // If current element is smaller
         // than the pivot
         if (arr[j] < pivot) {
-            // Increment index of
-            // smaller element
             i++;
-            swap(arr, i, j, animations);
+            if (arr[i] != undefined && arr[j] != undefined) {
+              var tp = arr[i]
+              var tpp = arr[j]
+              animations.push([i, j])
+              animations.push([i, j])
+          
+              animations.push([i, tpp])
+          
+              animations.push([i,j])
+              animations.push([i,j])
+              
+              animations.push([j, tp])
+            }
+            swap(arr, i, j, animations)
         }
+    }
+
+    if (arr[i+1] != undefined && arr[high] != undefined) {
+      var tp = arr[i+1]
+      var tpp = arr[high-1]
+      animations.push([i, high-1])
+      animations.push([i, high-1])
+  
+      animations.push([i, tpp])
+  
+      animations.push([i, high-1])
+      animations.push([i, high-1])
+      
+      animations.push([high-1, tp])
     }
     swap(arr, i + 1, high, animations);
     return (i + 1);
 }
 
 const swap = (arr, i, j, animations) =>  {
-    if (typeof arr[i] != 'undefined' || typeof arr[j] != 'undefined' )
-{    animations.push([i, j])
-    animations.push([i, j])
-    animations.push([i, arr[j]])
-    animations.push([j, arr[i]])
-}
+
+
     let temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
@@ -159,7 +180,7 @@ const swap = (arr, i, j, animations) =>  {
                 var temp = mainArray[j]
                 animations.push([j+1, temp])
 
-                if (typeof mainArray[j+1] != 'undefined' ) {
+                if (typeof mainArray[j+1] != undefined ) {
                     animations.push([j, j+1])
                     animations.push([j, j+1])
                     var temp2 = mainArray[j+1]
