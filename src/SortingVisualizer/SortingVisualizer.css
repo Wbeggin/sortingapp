@@ -3,126 +3,111 @@
     margin: auto;
     width: 50%;
     bottom: 1;
-    padding-top: 30px;
+    padding-top: 20px;
+    
+}
+
+.array-bar {
+    width: 15px;
+    background-color: blue;
+    display: inline-block;
+    margin: 0 1px;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+
+
+button {
+  position: relative;
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    background: #0069ed;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position:relative;
+    
+}
+
+button:hover,
+button:focus {
+    background: #0053ba;
+}
+
+button:focus {
+    outline: 0px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+@media only screen and (max-width: 600px) {
+  .array-container {
+    position:relative;
+    margin: auto;
+    width: 100%;
+    padding-top: 10px;
+    
 }
 
 .array-bar {
     width: 5px;
-    background-color: aqua;
+    background-color: blue;
     display: inline-block;
     margin: 0 1px;
 }
 
 
-
-
-
-.button {
-  align-items: center;
-  appearance: none;
-  background-clip: padding-box;
-  background-color: initial;
-  background-image: none;
-  border-style: none;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  flex-direction: row;
-  flex-shrink: 0;
-  font-family: Eina01,sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  justify-content: center;
-  line-height: 24px;
-  margin: 0;
-  min-height: 64px;
-  outline: none;
-  overflow: visible;
-  padding: 19px 26px;
-  pointer-events: auto;
+button {
   position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  width: auto;
-  word-break: keep-all;
-  z-index: 0;
+    display: inline-block;
+    border: none;
+    padding: 0.5rem 0.1rem;
+    margin: 1px;
+    text-decoration: none;
+    background: #0069ed;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position:relative;
+    
 }
 
-@media (min-width: 768px) {
-  .button {
-    padding: 19px 32px;
-  }
+button:hover,
+button:focus {
+    background: #0053ba;
 }
 
-.button:before,
-.button:after {
-  border-radius: 80px;
+button:focus {
+    outline: 0px solid #fff;
+    outline-offset: -4px;
 }
 
-.button:before {
-  background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
-  content: "";
-  display: block;
-  height: 100%;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -2;
+button:active {
+    transform: scale(0.99);
 }
-
-.button:after {
-  background-color: initial;
-  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
-  bottom: 4px;
-  content: "";
-  display: block;
-  left: 4px;
-  overflow: hidden;
-  position: absolute;
-  right: 4px;
-  top: 4px;
-  transition: all 100ms ease-out;
-  z-index: -1;
-}
-
-.button:hover:not(:disabled):before {
-  background: linear-gradient(92.83deg, rgb(255, 116, 38) 0%, rgb(249, 58, 19) 100%);
-}
-
-.button:hover:not(:disabled):after {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  transition-timing-function: ease-in;
-  opacity: 0;
-}
-
-.button:active:not(:disabled) {
-  color: #ccc;
-}
-
-.button:active:not(:disabled):before {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
-}
-
-.button:active:not(:disabled):after {
-  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
-  bottom: 4px;
-  left: 4px;
-  right: 4px;
-  top: 4px;
-}
-
-.button:disabled {
-  cursor: default;
-  opacity: .24;
 }

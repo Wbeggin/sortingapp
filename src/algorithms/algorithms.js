@@ -105,7 +105,6 @@ export const mergeSort = (array) => {
 
   const partition = (arr, low, high, animations)  => {
     
-  // pivot
     let pivot = arr[high]
     // Index of smaller element and
     // indicates the right position
@@ -121,14 +120,15 @@ export const mergeSort = (array) => {
             // smaller element
             i++
             if (arr[i] != 'undefined' && arr[j] != 'undefined') {
-
+                 //values that we're comparing
               animations.push([i, j])
               animations.push([i, j])
-
+                // change the value
               animations.push([j, arr[i]])
-
+                 //values that we're comparing
               animations.push([i, j])
               animations.push([i, j])
+              // change the value
               animations.push([i, arr[j]])
 
             }
@@ -137,12 +137,15 @@ export const mergeSort = (array) => {
     }
 
     if (arr[i] != 'undefined' && arr[high] != 'undefined') {
+      //values that we're comparing
       animations.push([i+1, high])
       animations.push([i+1, high])
+      // change the value
       animations.push([i+1, arr[high]])
-      
+      //values that we're comparing
       animations.push([i+1, high])
       animations.push([i+1, high])
+      // change the value
       animations.push([high, arr[i+1]])
     }
 
@@ -169,7 +172,7 @@ const swap = (arr, i, j) =>  {
   const bubbleSortHelper =  (
   mainArray,
   animations,
-) => {
+  ) => {
 
     for (let i = 0; i < mainArray.length; i++) {
         
@@ -189,16 +192,7 @@ const swap = (arr, i, j) =>  {
                 }
                 mainArray[j] = mainArray[j+1]
                 mainArray[j+1] = temp 
-               
             }
-            /*
-            else{
-                var temp = mainArray[j]
-                animations.push([j, j+1])
-                animations.push([j, j+1])
-                animations.push([j, temp])
-            }
-            */
         } 
     }
     return animations

@@ -1,10 +1,11 @@
 import React from "react";
 import * as algorithms from '../algorithms/algorithms'
 import './SortingVisualizer.css'
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
-const NUMBER_OF_BARS = 110
+const NUMBER_OF_BARS = 35
 
-const ANIMATON_SPEED = 20
+const ANIMATON_SPEED = 11
 
 export default class SortingVisualizer extends React.Component {
     
@@ -29,6 +30,11 @@ export default class SortingVisualizer extends React.Component {
             array.push(randomInt(a,b))
         }
         this.setState({array})
+        const arrayBars = document.getElementsByClassName('array-bar')
+        for (let i = 0; i < arrayBars.length; i++) {
+          arrayBars[i].style.backgroundColor = 'blue'
+        }
+        console.log(arrayBars)
     }
 
     // 
@@ -42,7 +48,7 @@ export default class SortingVisualizer extends React.Component {
             const [barOneIdx, barTwoIdx] = animations[i]
             const barOneStyle = arrayBars[barOneIdx].style
             const barTwoStyle = arrayBars[barTwoIdx].style
-            const color = i % 3 === 0 ? 'red' : 'blue'
+            const color = i % 3 === 0 ? 'red' : 'green'
             setTimeout(() => {
               barOneStyle.backgroundColor = color
               barTwoStyle.backgroundColor = color
@@ -67,7 +73,7 @@ export default class SortingVisualizer extends React.Component {
           const [barOneIdx, barTwoIdx] = animations[i]
           const barOneStyle = arrayBars[barOneIdx].style
           const barTwoStyle = arrayBars[barTwoIdx].style
-          const color = i % 3 === 0 ? 'red' : 'blue'
+          const color = i % 3 === 0 ? 'red' : 'green'
           setTimeout(() => {
             barOneStyle.backgroundColor = color
             barTwoStyle.backgroundColor = color
@@ -83,12 +89,6 @@ export default class SortingVisualizer extends React.Component {
     }
     
 
-    heapSort() {
-
-    
-
-    }
-
     bubbleSort() {
         const bubbleSorted = algorithms.bubbleSort(this.state.array)
         console.log({bubbleSorted})
@@ -99,7 +99,7 @@ export default class SortingVisualizer extends React.Component {
               const [barOneIdx, barTwoIdx] = bubbleSorted[i]
               const barOneStyle = arrayBars[barOneIdx].style
               const barTwoStyle = arrayBars[barTwoIdx].style
-              const color = i % 3 === 0 ? 'red' : 'blue'
+              const color = i % 3 === 0 ? 'red' : 'green'
               setTimeout(() => {
                 barOneStyle.backgroundColor = color
                 barTwoStyle.backgroundColor = color
@@ -118,6 +118,20 @@ export default class SortingVisualizer extends React.Component {
     render() {  
         const {array} = this.state
         return(
+            < div> 
+            <button class="button" role="button">
+            <button onClick={() => this.resetArray()}> New Array</button>
+            </button>
+            <button class="button" role="button">
+            <button onClick={() => this.mergeSort()}> Merge Sort</button>
+            </button>
+            <button class="button" role="button">
+            <button onClick={() => this.quickSort()}> Quick Sort</button>
+            </button>
+            <button class="button" role="button">
+            <button onClick={() => this.bubbleSort()}> Bubble Sort</button>
+            </button>
+
             <div className="array-container">
             {array.map((value, idx) => (
                 <div className="array-bar" 
@@ -125,23 +139,16 @@ export default class SortingVisualizer extends React.Component {
                 style={{height: `${value}px`}}>
                 </div>
             ))}
-            <button class="button" role="button">
-            <button onClick={() => this.resetArray()}> New Array</button>
-            <button onClick={() => this.mergeSort()}> Merge Sort</button>
-            <button onClick={() => this.quickSort()}> Quick Sort</button>
-            <button onClick={() => this.bubbleSort()}> Bubble Sort</button>
-            
-            </button>
-            <h2>Still working on this project (So probably will never finish it :D) 🚀</h2>
             </div>
+            <a href="https://www.github.com/wbeggin" class="fa fa-github"></a>
+            <a href="https://www.linkedin.com/in/wmwm/" class="fa fa-linkedin"></a>
+            </div> 
             
         )
-        
+       
     }
-
- 
-
 }
+
 
 // returns random int from interval 
 const randomInt = (a,b) => {
