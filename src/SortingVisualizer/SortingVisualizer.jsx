@@ -4,11 +4,9 @@ import './SortingVisualizer.css'
 
 
 const NUMBER_OF_BARS = 35
-
 const ANIMATON_SPEED = 11
-
+let isSorted = true
 export default class SortingVisualizer extends React.Component {
-    
     constructor(props) {
         super(props)
         
@@ -20,12 +18,13 @@ export default class SortingVisualizer extends React.Component {
     componentDidMount() {
         this.resetArray()
     }
-
+    
     
     resetArray() {
         const array = []
         const a = 5
         const b = 700
+        isSorted = false
         for (let i = 0; i < NUMBER_OF_BARS; i++) {
             array.push(randomInt(a,b))
         }
@@ -34,10 +33,12 @@ export default class SortingVisualizer extends React.Component {
         for (let i = 0; i < arrayBars.length; i++) {
           arrayBars[i].style.backgroundColor = 'blue'
         }
+        isSorted = false
     }
 
     // 
     mergeSort() {
+      if (isSorted != false) {return}
         const animations = algorithms.mergeSort(this.state.array)
         for (let i = 0; i < animations.length; i++) {
           const arrayBars = document.getElementsByClassName('array-bar')
@@ -59,9 +60,11 @@ export default class SortingVisualizer extends React.Component {
             }, i * ANIMATON_SPEED)
           }
         }
+        isSorted = true
       }
 
     quickSort() {
+      if (isSorted != false) {return}
       const animations = algorithms.quickSort(this.state.array)
       for (let i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar') 
@@ -83,11 +86,13 @@ export default class SortingVisualizer extends React.Component {
           }, i * ANIMATON_SPEED)
         }
       }
+      isSorted = true
     }
     
 
 
     bubbleSort() {
+      if (isSorted != false) {return}
         const bubbleSorted = algorithms.bubbleSort(this.state.array)
         for (let i = 0; i < bubbleSorted.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar')
@@ -109,7 +114,7 @@ export default class SortingVisualizer extends React.Component {
               }, i * ANIMATON_SPEED)
             }
           }
-
+          isSorted = true
     }
 
     render() {  
