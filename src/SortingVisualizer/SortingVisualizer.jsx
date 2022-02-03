@@ -1,7 +1,7 @@
 import React from "react";
 import * as algorithms from '../algorithms/algorithms'
 import './SortingVisualizer.css'
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+
 
 const NUMBER_OF_BARS = 35
 
@@ -34,13 +34,11 @@ export default class SortingVisualizer extends React.Component {
         for (let i = 0; i < arrayBars.length; i++) {
           arrayBars[i].style.backgroundColor = 'blue'
         }
-        console.log(arrayBars)
     }
 
     // 
     mergeSort() {
         const animations = algorithms.mergeSort(this.state.array)
-        console.log({animations})
         for (let i = 0; i < animations.length; i++) {
           const arrayBars = document.getElementsByClassName('array-bar')
           const isColorChange = i % 3 !== 2
@@ -67,7 +65,6 @@ export default class SortingVisualizer extends React.Component {
       const animations = algorithms.quickSort(this.state.array)
       for (let i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar') 
-        console.log(arrayBars)
         const isColorChange = i % 3 !== 2
         if (isColorChange) {
           const [barOneIdx, barTwoIdx] = animations[i]
@@ -89,9 +86,9 @@ export default class SortingVisualizer extends React.Component {
     }
     
 
+
     bubbleSort() {
         const bubbleSorted = algorithms.bubbleSort(this.state.array)
-        console.log({bubbleSorted})
         for (let i = 0; i < bubbleSorted.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar')
             const isColorChange = i % 3 !== 2
@@ -119,6 +116,7 @@ export default class SortingVisualizer extends React.Component {
         const {array} = this.state
         return(
             < div> 
+            
             <button class="button" role="button">
             <button onClick={() => this.resetArray()}> New Array</button>
             </button>
@@ -140,8 +138,10 @@ export default class SortingVisualizer extends React.Component {
                 </div>
             ))}
             </div>
-            <a href="https://www.github.com/wbeggin" class="fa fa-github"></a>
-            <a href="https://www.linkedin.com/in/wmwm/" class="fa fa-linkedin"></a>
+            <div class ="fax"> 
+    <a href="https://www.github.com/wbeggin" class="fa fa-github"></a>
+    <a href="https://www.linkedin.com/in/wmwm/" class="fa fa-linkedin"></a>
+    </div>
             </div> 
             
         )

@@ -14,14 +14,14 @@
 }
 
 .fa {
-  padding: 20px;
+  padding: 1px;
   font-size: 30px;
   width: 30px;
   text-align: center;
   text-decoration: none;
+  margin: 1px 5px;
   border-radius: 50%;
 }
-
 
 
 button {
