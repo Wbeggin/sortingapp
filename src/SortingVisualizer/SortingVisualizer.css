@@ -62,7 +62,7 @@ button:active {
     transform: scale(0.99);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .array-container {
     position:relative;
     margin: auto;
